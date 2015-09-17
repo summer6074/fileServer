@@ -54,6 +54,8 @@
 			<input type="file" name="file">
 		</div>
 		<input type="button" id="btn_add2" value="增加一行" >
+		<input type="text" name="desc" id="desc" value="none"/>
+		<input type="text" name="tag"  id="tag" value="none"/>
 		<input type="submit" value="上传" >
 		
 		

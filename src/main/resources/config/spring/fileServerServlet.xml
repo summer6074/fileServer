@@ -11,7 +11,7 @@
 
 
 	<!-- the package of annotation scan -->
-	 <context:component-scan base-package="com.fileserver.*" />
+	 <!-- <context:component-scan base-package="com.fileserver.*" />-->
 
 	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 

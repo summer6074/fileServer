@@ -19,17 +19,17 @@
     >  
 <!-- 配置数据源-->  
 
- <!--  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+ <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
     <property name="dataSource" ref="dataSource" />  
     <property name="configLocation" value="classpath:config/spring/mybatis-config.xml"></property>  
- </bean>  -->
+ </bean> 
 
-  <!--  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" >
         <value>root</value>
         </property>
-        <property name="password" value="root"/>
+        <!-- <property name="password" value="root"/>-->
         <property name="url" >
         <value>jdbc:mysql://localhost:3306/knowledge_forum?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</value>
         </property>
@@ -42,11 +42,11 @@
         <property name="poolPreparedStatements" value="true"/>
         <property name="defaultAutoCommit" value="true"/>
         <property name="testOnBorrow" value="true"/>
-    </bean>-->
+    </bean>
 
     <!-- Activates scanning of @Autowired -->
     <context:annotation-config/>
-    <!--  <context:component-scan base-package="com.knowledge.infra.server.*" />-->
+    <context:component-scan base-package="com.fileserver.*" />
     
  
 

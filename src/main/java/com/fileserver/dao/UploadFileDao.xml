@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.fileserver.dao.UploadFileDao">  
+<select id="getfilebyMap" parameterType = "java.util.Map" resultType="com.fileserver.model.UploadFile">
+   SELECT fileid,name,mapfilename,description,tag,uploadtime,uploader
+   FROM t_file
+   <where>
+     <if test="fileid !=null ">  
+           fileid=#{fileid, jdbcType=INTEGER}
+     </if> 
+      <if test="name !=null ">  
+     <!-- AND uname=#{name, jdbcType=VARCHAR}   -->  
+          AND name LIKE CONCAT('%', CONCAT(#{name, jdbcType=VARCHAR}, '%'))
+     </if> 
+      <if test="mapfilename !=null ">  
+      <!--  AND email=#{email, jdbcType=VARCHAR}  -->   
+          AND mapfilename LIKE CONCAT('%', CONCAT(#{mapfilename}, '%')
+     </if> 
+     <if test="description !=null ">  
+          AND description=#{description, jdbcType=VARCHAR} 
+     </if> 
+     <if test="uploader !=null ">  
+          AND uploader=#{uploader, jdbcType=VARCHAR} 
+     </if> 
+     <if test="uploadtime !=null ">
+				AND uploadtime &lt;=#{uploadtime, jdbcType=VARCHAR}
+	</if>
+   </where>
+   ORDER BY uploadtime
+		<if test="limitLen !=null ">
+			LIMIT #{limitLen}
+		</if>
+</select>
+<insert id="addfile" parameterType="com.fileserver.model.UploadFile" flushCache="true">
+ <selectKey resultType="java.lang.Integer" keyProperty="fileid" order="AFTER" >
+    SELECT @@IDENTITY
+  </selectKey>  
+   INSERT INTO t_file (name,mapfilename,description,tag,uploader) VALUES (#{name},#{mapfilename},#{description},#{tag},#{uploader})  
+</insert>  
+  
+<delete id="deletefile" parameterType="Long">  
+    DELETE FROM t_file WHERE fileid=#{fileid}  
+</delete>  
+</mapper>

@@ -87,7 +87,7 @@ public class CnToSpell {
 
     public static void main(String[] args) {
         CnToSpell cnToSpell = new CnToSpell();
-        String cnStr = "中华人民共和国（A-C）(12)_12345";
+        String cnStr = "hh中华人民共和国（A-C）(12)_12345.pdf";
         System.out.println(cnToSpell.getPinYin(cnStr));
         System.out.println(cnToSpell.getPinYinHeadChar(cnStr));
         System.out.println(cnToSpell.getCnASCII(cnStr));
